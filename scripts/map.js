@@ -32,35 +32,33 @@ $(window).on('load', function() {
     var lon = map.getCenter().lng, lonSet = false;
     var zoom = 12, zoomSet = false;
     var center;
-  /**
-    * MET DE GETSETTING CODE WORDT DE DATA UIT SPREADSHEET GEHAALD, DIT IS NU UITGESCHAKELD??
-      */
-    //if (getSetting('_initLat') !== '') {
-      //lat = getSetting('_initLat');
-      //latSet = true;
-    //}
+  
+    if (getSetting('_initLat') !== '') {
+      lat = getSetting('_initLat');
+      latSet = true;
+    }
 
-    //if (getSetting('_initLon') !== '') {
-      //lon = getSetting('_initLon');
-      //lonSet = true;
-    //}
+    if (getSetting('_initLon') !== '') {
+      lon = getSetting('_initLon');
+      lonSet = true;
+    }
 
-    //if (getSetting('_initZoom') !== '') {
-      //zoom = parseInt(getSetting('_initZoom'));
-      //zoomSet = true;
-    //}
+    if (getSetting('_initZoom') !== '') {
+      zoom = parseInt(getSetting('_initZoom'));
+      zoomSet = true;
+    }
 
-    //if ((latSet && lonSet) || !points) {
-      //center = L.latLng([52.51, 13.37]);
-    //} else {
-      //center = points.getBounds().getCenter();
-    //}
+    if ((latSet && lonSet) || !points) {
+      center = L.latLng([52.51, 13.37]);
+    } else {
+      center = points.getBounds().getCenter();
+    }
 
-    //if (!zoomSet && points) {
-      //zoom = map.getBoundsZoom(points.getBounds());
-    //}
+    if (!zoomSet && points) {
+      zoom = map.getBoundsZoom(points.getBounds());
+    }
 
-    map.setView(L.latLng([52.51, 13.37]), 10);
+    map.setView(center, zoom);
   }
 
 
