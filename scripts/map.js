@@ -22,7 +22,7 @@ $(window).on('load', function() {
     });
  
   }
-  map.setView(L.LatLng(40.737, -73.923), 8);
+  map.setView([40.737, -73.923], 8)
   }
 
 
