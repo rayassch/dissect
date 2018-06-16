@@ -28,10 +28,10 @@ $(window).on('load', function() {
    * to specified (lat, lon) and zoom if all three are specified
    */
   function centerAndZoomMap(points) {
-    //var lat = map.getCenter().lat, latSet = false;
-    //var lon = map.getCenter().lng, lonSet = false;
-    //var zoom = 12, zoomSet = false;
-    //var center;
+    var lat = map.getCenter().lat, latSet = false;
+    var lon = map.getCenter().lng, lonSet = false;
+    var zoom = 12, zoomSet = false;
+    var center;
   /**
     * MET DE GETSETTING CODE WORDT DE DATA UIT SPREADSHEET GEHAALD< DIT IS NU UITGESCHAKELD
       */
