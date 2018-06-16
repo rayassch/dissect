@@ -22,38 +22,77 @@ $(window).on('load', function() {
     });
  
   }
+  /**
+   * Sets the map view so that all markers are visible, or
+   * to specified (lat, lon) and zoom if all three are specified
+   */
+  function centerAndZoomMap(points) {
+    var lat = map.getCenter().lat, latSet = false;
+    var lon = map.getCenter().lng, lonSet = false;
+    var zoom = 12, zoomSet = false;
+    var center;
+
+    if (getSetting('_initLat') !== '') {
+      lat = getSetting('_initLat');
+      latSet = true;
+    }
+
+    if (getSetting('_initLon') !== '') {
+      lon = getSetting('_initLon');
+      lonSet = true;
+    }
+
+    if (getSetting('_initZoom') !== '') {
+      zoom = parseInt(getSetting('_initZoom'));
+      zoomSet = true;
+    }
+
+    if ((latSet && lonSet) || !points) {
+      center = L.latLng(lat, lon);
+    } else {
+      center = points.getBounds().getCenter();
+    }
+
+    if (!zoomSet && points) {
+      zoom = map.getBoundsZoom(points.getBounds());
+    }
+
+    map.setView(center, zoom);
+  }
+
 
   /**
    * Given a collection of points, determines the layers based on 'Group'
    * column in the spreadsheet.
    */
-  function determineLayers(dissect) {
-    var layerNamesFromDissect = [];
+  function determineLayers(points) {
+    var layerNamesFromSpreadsheet = [];
     var layers = {};
-    for (var i in dissect) {
-      var pointLayerNameFromDissect = dissect[i].Group;
-      if (layerNamesFromDissect.indexOf(pointLayerNameFromDissect) === -1) {
+    for (var i in points) {
+      var pointLayerNameFromSpreadsheet = points[i].Group;
+      if (layerNamesFromSpreadsheet.indexOf(pointLayerNameFromSpreadsheet) === -1) {
         markerColors.push(
           points[i]['Marker Icon'].indexOf('.') > 0
           ? points[i]['Marker Icon']
           : points[i]['Marker Color']
         );
-        layerNamesFromDissect.push(pointLayerNamesFromDissect);
+        layerNamesFromSpreadsheet.push(pointLayerNameFromSpreadsheet);
       }
     }
 
     // if none of the points have named layers or if there was only one name, return no layers
-    if (layerNamesFromDissect.length === 1) {
+    if (layerNamesFromSpreadsheet.length === 1) {
       layers = undefined;
     } else {
-      for (var i in layerNamesFromDissect) {
-        var layerNamesFromDissect = layerNamesFromDissect[i];
-        layers[layerNamesFromDissect] = L.layerGroup();
-        layers[layerNamesFromDissect].addTo(map);
+      for (var i in layerNamesFromSpreadsheet) {
+        var layerNameFromSpreadsheet = layerNamesFromSpreadsheet[i];
+        layers[layerNameFromSpreadsheet] = L.layerGroup();
+        layers[layerNameFromSpreadsheet].addTo(map);
       }
     }
     return layers;
   }
+
 
   /**
    * Assigns points to appropriate layers and clusters them if needed
