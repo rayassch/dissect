@@ -20,45 +20,10 @@ $(window).on('load', function() {
       markerColor: markerColor,
       iconColor: iconColor
     });
+ 
   }
-
-
-  function centerAndZoomMap(points) {
-    var lat = map.getCenter().lat, latSet = false;
-    var lon = map.getCenter().lng, lonSet = false;
-    var zoom = 12, zoomSet = false;
-    var center;
-
-    if (getSetting('_initLat') !== '') {
-      lat = getSetting('_initLat');
-      latSet = true;
-    }
-
-    if (getSetting('_initLon') !== '') {
-      lon = getSetting('_initLon');
-      lonSet = true;
-    }
-
-    if (getSetting('_initZoom') !== '') {
-      zoom = parseInt(getSetting('_initZoom'));
-      zoomSet = true;
-    }
-
-    if ((latSet && lonSet) || !points) {
-      center = L.latLng(lat, lon);
-    } else {
-      center = points.getBounds().getCenter();
-    }
-
-    if (!zoomSet && points) {
-      zoom = map.getBoundsZoom(points.getBounds());
-    }
-
-    map.setView(center, zoom);
+  map.setView(L.LatLng(40.737, -73.923), 8);
   }
-
-    //map.setView(L.LatLng(40.737, -73.923), 8);
-  //}
 
 
   /**
