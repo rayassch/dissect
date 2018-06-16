@@ -51,9 +51,9 @@ $(window).on('load', function() {
     }
 
     if ((latSet && lonSet) || !points) {
-      center = L.latLng(lat, lon);
+      center = L.latLng(52.51, 13.37);
     } else {
-      //center = points.getBounds().getCenter();
+      center = points.getBounds().getCenter();
     }
 
     if (!zoomSet && points) {
