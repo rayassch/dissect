@@ -48,19 +48,19 @@ $(window).on('load', function() {
     //if (getSetting('_initZoom') !== '') {
       //zoom = parseInt(getSetting('_initZoom'));
       //zoomSet = true;
-    }
+    //}
 
-    if ((latSet && lonSet) || !points) {
-      center = L.latLng([52.51, 13.37]);
-    } else {
-      center = points.getBounds().getCenter();
-    }
+    //if ((latSet && lonSet) || !points) {
+      //center = L.latLng([52.51, 13.37]);
+    //} else {
+      //center = points.getBounds().getCenter();
+    //}
 
-    if (!zoomSet && points) {
-      zoom = map.getBoundsZoom(points.getBounds());
-    }
+    //if (!zoomSet && points) {
+      //zoom = map.getBoundsZoom(points.getBounds());
+    //}
 
-    map.setView(center, zoom);
+    map.setView(L.latLng([52.51, 13.37]), 10);
   }
 
 
