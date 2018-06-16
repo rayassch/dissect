@@ -30,7 +30,7 @@ $(window).on('load', function() {
   function determineLayers(dissect) {
     var layerNamesFromDissect = [];
     var layers = {};
-    for (var i in points) {
+    for (var i in dissect) {
       var pointLayerNameFromDissect = dissect[i].Group;
       if (layerNamesFromDissect.indexOf(pointLayerNameFromDissect) === -1) {
         markerColors.push(
