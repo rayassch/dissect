@@ -48,7 +48,7 @@ $(window).on('load', function() {
     //if (getSetting('_initZoom') !== '') {
       //zoom = parseInt(getSetting('_initZoom'));
       //zoomSet = true;
-    //}
+    }
 
     if ((latSet && lonSet) || !points) {
       center = L.latLng(lat, lon);
