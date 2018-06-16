@@ -33,7 +33,7 @@ $(window).on('load', function() {
     var zoom = 12, zoomSet = false;
     var center;
   /**
-    * MET DE GETSETTING CODE WORDT DE DATA UIT SPREADSHEET GEHAALD< DIT IS NU UITGESCHAKELD
+    * MET DE GETSETTING CODE WORDT DE DATA UIT SPREADSHEET GEHAALD, DIT IS NU UITGESCHAKELD??
       */
     //if (getSetting('_initLat') !== '') {
       //lat = getSetting('_initLat');
@@ -48,7 +48,7 @@ $(window).on('load', function() {
     //if (getSetting('_initZoom') !== '') {
       //zoom = parseInt(getSetting('_initZoom'));
       //zoomSet = true;
-    //}
+    }
 
     //if ((latSet && lonSet) || !points) {
       //center = L.latLng(lat, lon);
