@@ -50,15 +50,15 @@ $(window).on('load', function() {
       //zoomSet = true;
     }
 
-    //if ((latSet && lonSet) || !points) {
-      //center = L.latLng(lat, lon);
-    //} else {
+    if ((latSet && lonSet) || !points) {
+      center = L.latLng(lat, lon);
+    } else {
       //center = points.getBounds().getCenter();
-    //}
+    }
 
-    //if (!zoomSet && points) {
-      //zoom = map.getBoundsZoom(points.getBounds());
-    //}
+    if (!zoomSet && points) {
+      zoom = map.getBoundsZoom(points.getBounds());
+    }
 
     map.setView(center, zoom);
   }
