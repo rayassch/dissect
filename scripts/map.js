@@ -23,16 +23,12 @@ $(window).on('load', function() {
   }
 
 
-  /**
-   * Sets the map view so that all markers are visible, or
-   * to specified (lat, lon) and zoom if all three are specified
-   */
   function centerAndZoomMap(points) {
     var lat = map.getCenter().lat, latSet = false;
     var lon = map.getCenter().lng, lonSet = false;
     var zoom = 12, zoomSet = false;
     var center;
-  
+
     if (getSetting('_initLat') !== '') {
       lat = getSetting('_initLat');
       latSet = true;
@@ -49,7 +45,7 @@ $(window).on('load', function() {
     }
 
     if ((latSet && lonSet) || !points) {
-      center = L.latLng([52.51, 13.37]);
+      center = L.latLng(lat, lon);
     } else {
       center = points.getBounds().getCenter();
     }
@@ -59,6 +55,8 @@ $(window).on('load', function() {
     }
 
     //map.setView(center, zoom);
+  //}
+
     map.setView(L.LatLng(40.737, -73.923), 8);
   }
 
