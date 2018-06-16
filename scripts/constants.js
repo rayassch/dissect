@@ -18,9 +18,7 @@ var constants = {
 	_tileProvider: 'Basemap Tiles',
 	_markercluster: 'Cluster Markers',
   _introPopupText: 'Intro Popup Text',
-  _initZoom: 'Initial Zoom',
-  _initLat: 'Initial Center Latitude',
-  _initLon: 'Initial Center Longitude',
+
 	// Map Controls
 	_mapSearch: 'Search Button',
   _mapSearchKey: 'Mapzen Search Key',
